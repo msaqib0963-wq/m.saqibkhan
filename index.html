@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Saqib | BS Mathematics & Tech Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700;800&family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for Live Math Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- KaTeX for Beautiful Math Formula Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --secondary: #6366f1;
+            --accent: #f59e0b;
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding: 120px 2rem 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1250px;
+            margin: 0 auto;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: rgba(2, 132, 199, 0.15);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(2, 132, 199, 0.3);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background: var(--card-dark);
+            border-color: var(--primary);
+        }
+
+        .hero-math-card {
+            flex: 0.9;
+            background: var(--card-dark);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .hero-math-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Sections Common */
+        section {
+            padding: 90px 2rem;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-dark);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        /* Math Visualization Section */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            margin-top: 1rem;
+        }
+
+        .controls-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .control-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .control-group label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .control-group input[type="range"] {
+            width: 50%;
+            accent-color: var(--primary);
+        }
+
+        /* Skills Badges */
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #0f172a;
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin: 4px;
+        }
+
+        /* Journey Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.6rem;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid var(--bg-dark);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Contact Form */
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.9rem;
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 1rem;
+            font-family: inherit;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: #090d16;
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 140px;
+            }
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .hero-p {
+                margin: 0 auto 2rem;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .control-group input[type="range"] {
+                width: 40%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fa-solid fa-square-root-variable"></i> M.SAQIB
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#math-visuals">Math Graphs</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="badge-tag"><i class="fa-solid fa-graduation-cap"></i> BS Mathematics Scholar</span>
+            <h1>Muhammad Saqib</h1>
+            <h2>Mathematics & Computational Programming</h2>
+            <p class="hero-p">
+                Undergraduate student at Bahauddin Zakariya University (BZU), Multan. Combining mathematical modeling, real-time calculus visualizations, and C++/Python development.
+            </p>
+            <div class="btn-group">
+                <a href="#math-visuals" class="btn btn-primary"><i class="fa-solid fa-chart-line"></i> Explore Interactive Graphs</a>
+                <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Get in Touch</a>
+            </div>
+        </div>
+
+        <div class="hero-math-card">
+            <h3><i class="fa-solid fa-square-root-variable"></i> Key Mathematical Identity</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Fundamental Theorem of Calculus & Euler's Relation:</p>
+            <div style="background: #0f172a; padding: 1.2rem; border-radius: 8px; text-align: center; font-size: 1.2rem; border: 1px solid var(--border);">
+                $$\int_{a}^{b} f(x) dx = F(b) - F(a)$$
+                <div style="margin-top: 10px; color: var(--accent);">
+                    $$e^{i\pi} + 1 = 0$$
+                </div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+                <i class="fa-solid fa-lightbulb" style="color: var(--accent);"></i> Combining pure mathematical structures with algorithmic execution in C++ and Python.
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+            <p>Bridging pure mathematics with modern computational technology</p>
+        </div>
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fa-solid fa-user-graduate"></i> Academic Focus</h3>
+                <p>
+                    I am currently pursuing my <strong>BS in Mathematics (3rd Semester)</strong> at Bahauddin Zakariya University, Multan. My interest lies in Calculus, Linear Algebra, Differential Equations, and numerical algorithms.
+                </p>
+                <p style="margin-top: 1rem;">
+                    Mathematics provides the underlying theoretical foundation for computing, algorithm analysis, machine learning models, and modern encryption techniques.
+                </p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;"><i class="fa-solid fa-code"></i> Programming & Tech</h3>
+                <p>
+                    Parallel to my mathematics degree, I am actively learning <strong>C++</strong> and <strong>Python</strong>. I focus on implementing mathematical algorithms, logic building, array manipulation, and dynamic graphics visualization.
+                </p>
+                <div style="margin-top: 1.2rem;">
+                    <span class="skill-tag"><i class="fa-brands fa-python" style="color:#3776AB;"></i> Python</span>
+                    <span class="skill-tag"><i class="fa-solid fa-code" style="color:#00599C;"></i> C++</span>
+                    <span class="skill-tag"><i class="fa-brands fa-git-alt" style="color:#F05032;"></i> Git & GitHub</span>
+                    <span class="skill-tag"><i class="fa-solid fa-calculator" style="color:#107C41;"></i> Numerical Analysis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-title">
+            <h2>Education</h2>
+            <p>My academic trajectory and university background</p>
+        </div>
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <h3 style="font-size: 1.4rem; color: var(--text-light);">BS Mathematics</h3>
+                    <p style="color: var(--primary); font-weight: 600;">Bahauddin Zakariya University, Multan (BZU)</p>
+                </div>
+                <span class="badge-tag">Session: 2025 – 2029</span>
+            </div>
+            <p style="color: var(--text-muted); margin-top: 1rem;">
+                Currently studying in the <strong>3rd Semester</strong>. Core subjects include Multivariable Calculus, Vector Analysis, Discrete Mathematics, Ordinary Differential Equations (ODEs), and Linear Algebra.
+            </p>
+        </div>
+    </section>
+
+    <!-- Interactive Math Visualizations (Live Graphs) -->
+    <section id="math-visuals" style="background: rgba(15, 23, 42, 0.5); border-radius: 20px; padding: 4rem 2rem;">
+        <div class="section-title">
+            <h2><i class="fa-solid fa-chart-area" style="color: var(--primary);"></i> Interactive Mathematics Graphs</h2>
+            <p>Live, real-time interactive models showing Calculus integration & Mathematical curves</p>
+        </div>
+
+        <div class="grid-2">
+            <!-- Calculus Definite Integral Graph -->
+            <div class="card">
+                <h3 style="color: var(--primary);"><i class="fa-solid fa-square-root-variable"></i> Definite Integral $\int_0^b x^2 dx$</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">
+                    Adjust upper limit $b$ to calculate Area Under Curve live.
+                </p>
+
+                <div class="chart-container">
+                    <canvas id="integralChart"></canvas>
+                </div>
+
+                <div class="controls-panel">
+                    <div class="control-group">
+                        <label for="limitB">Upper Limit ($b$): <span id="limitBVal" style="color: var(--primary); font-weight: bold;">3.0</span></label>
+                        <input type="range" id="limitB" min="1" max="5" step="0.1" value="3">
+                    </div>
+                    <div style="text-align: center; background: #0f172a; padding: 8px; border-radius: 6px;">
+                        <strong>Calculated Area: </strong> <span id="areaResult" style="color: var(--accent); font-weight: bold;">9.000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wave Amplitude & Frequency Chart -->
+            <div class="card">
+                <h3 style="color: var(--secondary);"><i class="fa-solid fa-wave-square"></i> Trigonometric Wave $f(x) = A \sin(\omega x)$</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">
+                    Adjust Amplitude ($A$) and Frequency ($\omega$) live.
+                </p>
+
+                <div class="chart-container">
+                    <canvas id="trigChart"></canvas>
+                </div>
+
+                <div class="controls-panel">
+                    <div class="control-group">
+                        <label for="amp">Amplitude ($A$): <span id="ampVal" style="color: var(--secondary); font-weight: bold;">1.0</span></label>
+                        <input type="range" id="amp" min="0.5" max="3" step="0.1" value="1">
+                    </div>
+                    <div class="control-group">
+                        <label for="freq">Frequency ($\omega$): <span id="freqVal" style="color: var(--secondary); font-weight: bold;">1.0</span></label>
+                        <input type="range" id="freq" min="0.5" max="4" step="0.1" value="1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-title">
+            <h2>Skills & Technologies</h2>
+            <p>Mathematical modeling and software development stack</p>
+        </div>
+        <div class="grid-3">
+            <div class="card">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fa-solid fa-calculator"></i> Mathematics</h3>
+                <ul style="list-style: none; color: var(--text-muted);">
+                    <li style="margin-bottom: 8px;"><i class="fa-solid fa-chec
