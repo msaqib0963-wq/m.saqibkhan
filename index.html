@@ -54,9 +54,9 @@
     .btn-primary { background: var(--accent); color: #071321; border-color: transparent; }
     .btn-secondary { background: rgba(255,255,255,.025); color: var(--text); }
     
-    /* Profile Card Added Here */
-    .visual-card { padding: 16px; background: linear-gradient(145deg, rgba(21,36,58,.94), rgba(13,23,39,.94)); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); }
-    .profile-img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 18px; border: 1px solid var(--line); display: block; margin-bottom: 14px; }
+    /* Profile Image Style */
+    .visual-card { padding: 16px; background: linear-gradient(145deg, rgba(21,36,58,.94), rgba(13,23,39,.94)); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); transform: rotate(1deg); }
+    .profile-img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); display: block; margin-bottom: 12px; }
     
     .visual-top { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .8rem; margin-bottom: 14px; }
     .window-dots { display: flex; gap: 5px; }
@@ -215,4 +215,35 @@
     </section>
 
     <section id="skills">
-      <div class="container
+      <div class="container">
+        <div class="section-head"><div class="kicker">Skills</div><h2>Tools I work with.</h2><p>These are the skills I want to develop further and demonstrate through real work.</p></div>
+        <div class="skills-grid">
+          <article class="skill-card"><div class="skill-icon">X</div><h3>Advanced Excel</h3><p>Spreadsheet organization, formulas, data analysis, charts, and presenting information clearly.</p><div class="tag-list"><span class="tag">Formulas</span><span class="tag">Charts</span><span class="tag">Data</span></div></article>
+          <article class="skill-card"><div class="skill-icon">Py</div><h3>Python</h3><p>Programming fundamentals and exploring ways to use code for calculations and data tasks.</p><div class="tag-list"><span class="tag">Basics</span><span class="tag">Problem solving</span></div></article>
+          <article class="skill-card"><div class="skill-icon">∑</div><h3>Mathematics</h3><p>Mathematical reasoning, algebra, functions, and working through problems step by step.</p><div class="tag-list"><span class="tag">Algebra</span><span class="tag">Calculus</span></div></article>
+          <article class="skill-card"><div class="skill-icon">↗</div><h3>Graphs & Visualization</h3><p>Creating and interpreting graphs to make patterns and mathematical relationships easier to understand.</p><div class="tag-list"><span class="tag">Graphs</span><span class="tag">Visual analysis</span></div></article>
+          <article class="skill-card"><div class="skill-icon">AI</div><h3>AI Tools</h3><p>Using AI tools to support learning, explore ideas, and assist with coding and project workflows.</p><div class="tag-list"><span class="tag">AI-assisted learning</span><span class="tag">Experimentation</span></div></article>
+          <article class="skill-card"><div class="skill-icon">&lt;/&gt;</div><h3>Web & Coding Basics</h3><p>Learning how HTML, CSS, and JavaScript work together to create a personal website.</p><div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Selected projects</div><h2>Learning through projects.</h2><p>Use this section to showcase real examples. Replace the sample cards with your actual work as you complete it.</p></div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-art" aria-hidden="true"><div class="mini-sheet"><div class="sheet-row"><span></span><span></span><span></span></div><div class="sheet-row"><span></span><span></span><span></span></div><div class="sheet-row"><span></span><span></span><span></span></div><div class="sheet-row"><span></span><span></span><span></span></div></div></div>
+            <div class="project-content"><div class="project-type">Excel · Data</div><h3>Excel Data Analysis</h3><p>A space for an Excel workbook showing data cleaning, formulas, summary tables, and charts. Add a screenshot or workbook link when ready.</p><div class="tag-list"><span class="tag">Excel</span><span class="tag">Charts</span><span class="tag">Analysis</span></div><span class="project-link">Project details coming soon</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art"><div class="chart-box" style="width:min(330px,100%)"><canvas id="projectChart" width="500" height="170" role="img" aria-label="Example mathematical graph">Example mathematical graph.</canvas></div></div>
+            <div class="project-content"><div class="project-type">Mathematics · Visualization</div><h3>Mathematical Graphs</h3><p>An interactive-style visual example of how mathematical relationships can be represented with graphs. Add your own graph or explanation here.</p><div class="tag-list"><span class="tag">Algebra</span><span class="tag">Functions</span><span class="tag">Graphs</span></div><span class="project-link">Demonstration graphic</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art"><div style="font-size:2.7rem;letter-spacing:.2em;color:var(--accent-2)"> { } </div></div>
+            <div class="project-content"><div class="project-type">Python · Programming</div><h3>Python Practice Projects</h3><p>Show small Python programs, explain what each one does, and link to the source code once you have uploaded it to GitHub.</p><div class="tag-list"><span class="tag">Python</span><span class="tag">Logic</span><span class="tag">Code</span></div><span class="project-link">Add GitHub project link</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art"><div style="text-align:center"><div style="font-size:2.2rem;color:var(--warm)">✦</div><strong>AI-assisted workflow</strong><div class="muted" style="font-size:.82rem">Idea → build → test → improve</div></div></div>
+            <div class="project-content"><div class="project-type">AI Tools · Learni
