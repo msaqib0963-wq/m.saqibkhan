@@ -1,573 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Saqib | BS Mathematics & Tech Portfolio</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chart.js for Live Maths Graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Muhammad Saqib's portfolio in mathematics, Excel, Python, data visualization, and AI tools.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Muhammad Saqib | Mathematics & Data Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111c2e;
+      --panel-2: #15243a;
+      --text: #edf4ff;
+      --muted: #a7b6cc;
+      --line: rgba(174, 197, 229, .16);
+      --accent: #56d6c9;
+      --accent-2: #7aa8ff;
+      --warm: #f5c778;
+      --shadow: 0 18px 50px rgba(0,0,0,.22);
+      --radius: 20px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(circle at 85% 0%, rgba(54, 109, 173, .16), transparent 28rem),
+        radial-gradient(circle at 0% 30%, rgba(49, 184, 170, .08), transparent 26rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--warm); outline-offset: 4px; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .nav-wrap { position: sticky; top: 0; z-index: 20; background: rgba(11,18,32,.84); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.03em; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #071321; font-weight: 900; }
+    .nav-links { display: flex; gap: 22px; align-items: center; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .menu-btn { display: none; border: 1px solid var(--line); color: var(--text); background: var(--panel); border-radius: 10px; padding: 8px 12px; font-size: 1rem; }
+    .hero { padding: 88px 0 70px; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 54px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); border: 1px solid rgba(86,214,201,.25); background: rgba(86,214,201,.07); padding: 6px 12px; border-radius: 999px; font-size: .82rem; font-weight: 700; }
+    .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 5px rgba(86,214,201,.12); }
+    h1 { font-size: clamp(2.65rem, 6vw, 5rem); line-height: 1.04; letter-spacing: -.065em; margin: 22px 0 18px; }
+    .gradient-text { background: linear-gradient(100deg, var(--accent), #9ac3ff 70%); color: transparent; background-clip: text; -webkit-background-clip: text; }
+    .hero p { max-width: 650px; color: var(--muted); font-size: 1.08rem; margin: 0 0 26px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--line); border-radius: 12px; padding: 11px 17px; font-weight: 750; transition: transform .2s, border-color .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(86,214,201,.55); }
+    .btn-primary { background: var(--accent); color: #071321; border-color: transparent; }
+    .btn-secondary { background: rgba(255,255,255,.025); color: var(--text); }
+    
+    /* Profile Image Style in Hero Section */
+    .profile-card { padding: 16px; background: linear-gradient(145deg, rgba(21,36,58,.94), rgba(13,23,39,.94)); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); text-align: center; }
+    .profile-img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 18px; border: 1px solid var(--line); margin-bottom: 14px; }
+    
+    .visual-top { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .8rem; margin-bottom: 14px; }
+    .window-dots { display: flex; gap: 5px; }
+    .window-dots i { width: 7px; height: 7px; display: block; border-radius: 50%; background: #40516a; }
+    .chart-box { background: rgba(5,12,23,.45); border: 1px solid var(--line); border-radius: 17px; padding: 12px; }
+    canvas { display: block; width: 100%; height: auto; }
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin-top: 12px; }
+    .stat { background: rgba(255,255,255,.035); border: 1px solid var(--line); border-radius: 13px; padding: 11px; }
+    .stat strong { display: block; font-size: 1rem; color: var(--text); }
+    .stat span { display: block; color: var(--muted); font-size: .7rem; }
+    section { padding: 64px 0; }
+    .section-head { max-width: 700px; margin-bottom: 28px; }
+    .kicker { color: var(--accent); font-size: .78rem; font-weight: 850; text-transform: uppercase; letter-spacing: .15em; }
+    h2 { margin: 7px 0 10px; font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15; letter-spacing: -.045em; }
+    .section-head p, .muted { color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; }
+    .panel { background: linear-gradient(145deg, rgba(17,28,46,.95), rgba(14,24,40,.95)); border: 1px solid var(--line); border-radius: var(--radius); padding: 25px; }
+    .panel p { color: var(--muted); margin: 8px 0 0; }
+    .facts { display: grid; gap: 12px; }
+    .fact { display: flex; gap: 12px; align-items: flex-start; }
+    .fact-icon { flex: 0 0 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: rgba(86,214,201,.1); color: var(--accent); font-weight: 850; }
+    .fact strong { display: block; }
+    .fact span { color: var(--muted); font-size: .9rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; }
+    .skill-card { background: var(--panel); border: 1px solid var(--line); border-radius: 17px; padding: 20px; }
+    .skill-icon { width: 45px; height: 45px; border-radius: 13px; display: grid; place-items: center; background: rgba(122,168,255,.12); color: var(--accent-2); font-weight: 900; font-size: 1.05rem; margin-bottom: 15px; }
+    .skill-card h3, .project-card h3 { margin: 0 0 7px; font-size: 1.08rem; }
+    .skill-card p, .project-card p { color: var(--muted); margin: 0; font-size: .92rem; }
+    .tag-list { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 14px; }
+    .tag { font-size: .75rem; color: #c9d8ed; background: rgba(255,255,255,.045); border: 1px solid var(--line); padding: 4px 9px; border-radius: 999px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .project-card { overflow: hidden; background: var(--panel); border: 1px solid var(--line); border-radius: 19px; }
+    .project-art { min-height: 135px; padding: 20px; display: flex; align-items: center; justify-content: center; background: linear-gradient(130deg, rgba(86,214,201,.12), rgba(122,168,255,.12)); border-bottom: 1px solid var(--line); }
+    .project-art .mini-sheet { width: min(330px,100%); border: 1px solid rgba(173,202,238,.25); background: rgba(8,17,30,.76); border-radius: 10px; padding: 10px; }
+    .sheet-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; margin-bottom: 5px; }
+    .sheet-row span { height: 12px; border-radius: 3px; background: rgba(122,168,255,.18); }
+    .sheet-row:first-child span { background: rgba(86,214,201,.35); }
+    .project-content { padding: 20px; }
+    .project-type { color: var(--accent); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+    .project-link { display: inline-block; margin-top: 14px; color: var(--accent); font-size: .88rem; font-weight: 750; }
+    .notice { border: 1px dashed rgba(245,199,120,.4); border-radius: 13px; padding: 13px 15px; color: var(--muted); font-size: .88rem; margin-top: 17px; }
+    .certificate { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 18px; }
+    .cert-icon { width: 60px; height: 60px; border-radius: 17px; display: grid; place-items: center; background: rgba(245,199,120,.12); color: var(--warm); font-size: 1.5rem; }
+    .certificate h3 { margin: 0 0 4px; }
+    .certificate p { margin: 0; color: var(--muted); font-size: .92rem; }
 
-    <style>
-        :root {
-            --primary: #0284c7;
-            --primary-dark: #0369a1;
-            --secondary: #6366f1;
-            --accent: #f59e0b;
-            --bg-dark: #0f172a;
-            --card-dark: #1e293b;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --radius: 12px;
-            --transition: all 0.3s ease;
-        }
+    .certificate-image-wrap { margin-top: 18px; }
+    .certificate-image { display: block; width: 100%; max-width: 850px; height: auto; margin: 0 auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+    .certificate-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Navbar */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-family: 'Fira Code', monospace;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            padding: 130px 2rem 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 3rem;
-        }
-
-        .hero-content {
-            flex: 1;
-        }
-
-        /* Profile Image */
-        .profile-img-container {
-            margin-bottom: 1.5rem;
-        }
-
-        .profile-img-container img {
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            border: 4px solid var(--primary);
-            object-fit: cover;
-            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.3);
-        }
-
-        .badge-tag {
-            display: inline-block;
-            background: rgba(2, 132, 199, 0.15);
-            color: var(--primary);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid rgba(2, 132, 199, 0.3);
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 0.8rem;
-            color: #ffffff;
-        }
-
-        .hero h2 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.8rem 1.6rem;
-            border-radius: var(--radius);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-light);
-            border: 1px solid var(--border);
-        }
-
-        .btn-outline:hover {
-            background: var(--card-dark);
-            border-color: var(--primary);
-        }
-
-        .hero-math-card {
-            flex: 0.85;
-            background: var(--card-dark);
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .hero-math-card h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--card-dark);
-            border: 1px solid var(--border);
-            padding: 2rem;
-            border-radius: var(--radius);
-        }
-
-        /* Chart Styles */
-        .chart-box {
-            position: relative;
-            width: 100%;
-            height: 280px;
-            margin-top: 1rem;
-        }
-
-        .controls {
-            margin-top: 1.2rem;
-            background: rgba(15, 23, 42, 0.7);
-            padding: 1rem;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .control-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .control-row input {
-            width: 55%;
-            accent-color: var(--primary);
-        }
-
-        .skill-tag {
-            display: inline-block;
-            background: #0f172a;
-            border: 1px solid var(--border);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            margin: 4px;
-        }
-
-        footer {
-            background: #090d16;
-            border-top: 1px solid var(--border);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 120px;
-            }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .btn-group {
-                justify-content: center;
-            }
-        }
-    </style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-link { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--line); color: var(--muted); gap: 12px; }
+    .contact-link:last-child { border-bottom: 0; }
+    .contact-link:hover { color: var(--accent); }
+    .contact-note { background: rgba(86,214,201,.06); border: 1px solid rgba(86,214,201,.17); padding: 16px; border-radius: 14px; color: var(--muted); font-size: .92rem; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 35px; color: var(--muted); font-size: .86rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .top-link { color: var(--accent); }
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; padding-top: 60px; gap: 30px; }
+      .profile-card { max-width: 520px; margin: 0 auto; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2,1fr); }
+      .nav-links { gap: 13px; font-size: .82rem; }
+    }
+    @media (max-width: 600px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      nav { min-height: 64px; flex-wrap: wrap; padding: 11px 0; }
+      .menu-btn { display: block; }
+      .nav-links { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 5px 0 8px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 9px 3px; }
+      .hero { padding: 48px 0 45px; }
+      h1 { font-size: clamp(2.55rem, 14vw, 4rem); }
+      section { padding: 48px 0; }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      .panel { padding: 20px; }
+      .certificate { grid-template-columns: auto 1fr; }
+      .certificate .btn { grid-column: 1 / -1; }
+      .stat { padding: 8px; }
+      .stat strong { font-size: .9rem; }
+      .stat span { font-size: .65rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
+  <div class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Muhammad Saqib home">
+        <span class="brand-mark">MS</span><span>Muhammad Saqib</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu ☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#certificates">Certificate</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
 
-    <!-- Header -->
-    <header>
-        <div class="nav-container">
-            <a href="#home" class="logo"><i class="fa-solid fa-square-root-variable"></i> M.SAQIB</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#math-visuals">Math Graphs</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+  <main>
+    <header class="container hero" id="home">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Mathematics • Data • Technology</span>
+        <h1>Hi, I'm <span class="gradient-text">Muhammad Saqib.</span></h1>
+        <p>
+          I’m a BS Mathematics student interested in using mathematics, Advanced Excel,
+          Python, and data visualization to explore problems and communicate insights clearly.
+          I’m also learning how AI tools can support practical projects.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore my projects <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href="#contact">Get in touch</a>
         </div>
+      </div>
+      
+      <!-- Profile Picture Added Here with name profile.jpg -->
+      <aside class="profile-card" aria-label="Muhammad Saqib Profile Picture">
+        <div class="visual-top"><span>MUHAMMAD SAQIB</span><span class="window-dots"><i></i><i></i><i></i></span></div>
+        <img src="profile.jpg" alt="Muhammad Saqib Profile Picture" class="profile-img">
+        <div class="stat-row">
+          <div class="stat"><strong>Excel</strong><span>Data & analysis</span></div>
+          <div class="stat"><strong>Python</strong><span>Learning</span></div>
+          <div class="stat"><strong>Math</strong><span>Logic</span></div>
+        </div>
+      </aside>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <!-- Profile Image -->
-            <div class="profile-img-container">
-                <img src="profile.jpg" alt="Muhammad Saqib">
-            </div>
-            <span class="badge-tag"><i class="fa-solid fa-graduation-cap"></i> BS Mathematics Scholar</span>
-            <h1>Muhammad Saqib</h1>
-            <h2>Mathematics & Computational Programming</h2>
-            <p>
-                Undergraduate student at Bahauddin Zakariya University (BZU), Multan. Passionate about mathematical modeling, calculus visualizations, and C++/Python development.
-            </p>
-            <div class="btn-group">
-                <a href="#math-visuals" class="btn btn-primary"><i class="fa-solid fa-chart-line"></i> View Live Graphs</a>
-                <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
-            </div>
-        </div>
-
-        <div class="hero-math-card">
-            <h3><i class="fa-solid fa-square-root-variable"></i> Fundamental Theorem of Calculus</h3>
-            <div style="background: #0f172a; padding: 1rem; border-radius: 8px; text-align: center; font-size: 1.1rem; color: var(--accent); margin: 1rem 0; border: 1px solid var(--border);">
-                $$\int_{a}^{b} f(x) dx = F(b) - F(a)$$
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">
-                Merging analytical mathematical principles with software engineering and real-time data plotting.
-            </p>
-        </div>
-    </section>
-
-    <!-- About Section -->
     <section id="about">
-        <div class="section-title">
-            <h2>About Me</h2>
-            <p>Academic background & technical skills</p>
+      <div class="container">
+        <div class="section-head"><div class="kicker">About me</div><h2>Math thinking, practical tools.</h2><p>A student portfolio focused on the skills I’m developing and the work I want to share.</p></div>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>My journey</h3>
+            <p>
+              I am a third-semester BS Mathematics student at Bahauddin Zakariya University (BZU), Multan.
+              My interests include algebra, mathematical graphs, working with data in Excel, Python programming,
+              and exploring AI tools. I want to keep learning by building useful projects and documenting what I learn.
+            </p>
+            <p>
+              I believe mathematics is not only about formulas—it can also help us understand patterns,
+              analyze information, and solve real-world problems.
+            </p>
+          </article>
+          <aside class="panel facts">
+            <div class="fact"><div class="fact-icon">∑</div><div><strong>Education</strong><span>BS Mathematics · 3rd semester</span></div></div>
+            <div class="fact"><div class="fact-icon">▦</div><div><strong>Focus areas</strong><span>Excel, Python, algebra, graphs</span></div></div>
+            <div class="fact"><div class="fact-icon">✦</div><div><strong>Exploring</strong><span>Data visualization and AI tools</span></div></div>
+          </aside>
         </div>
-        <div class="grid-2">
-            <div class="card">
-                <h3 style="color: var(--primary); margin-bottom: 0.8rem;"><i class="fa-solid fa-user-graduate"></i> Academic Journey</h3>
-                <p>
-                    Currently in my <strong>3rd Semester</strong> pursuing a <strong>BS in Mathematics</strong> at Bahauddin Zakariya University (BZU), Multan. My core focus includes Calculus, Linear Algebra, and Differential Equations.
-                </p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--secondary); margin-bottom: 0.8rem;"><i class="fa-solid fa-code"></i> Programming Stack</h3>
-                <p style="margin-bottom: 1rem;">Building functional programming logic using C++ and Python alongside modern web technologies.</p>
-                <div>
-                    <span class="skill-tag">C++</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">HTML/CSS/JS</span>
-                    <span class="skill-tag">Chart.js</span>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <!-- Math Visualizations Section -->
-    <section id="math-visuals" style="background: rgba(15, 23, 42, 0.4); border-radius: 16px;">
-        <div class="section-title">
-            <h2><i class="fa-solid fa-chart-area" style="color: var(--primary);"></i> Interactive Mathematics Graphs</h2>
-            <p>Live interactive visualization of Calculus curves and Trigonometric functions</p>
-        </div>
-
-        <div class="grid-2">
-            <!-- Graph 1: Integral -->
-            <div class="card">
-                <h3 style="color: var(--primary); font-size: 1.1rem;">Definite Integral Area ($y = x^2$)</h3>
-                <div class="chart-box">
-                    <canvas id="integralChart"></canvas>
-                </div>
-                <div class="controls">
-                    <div class="control-row">
-                        <label>Upper Limit ($b$): <span id="bVal" style="color: var(--primary); font-weight: bold;">3.0</span></label>
-                        <input type="range" id="bSlider" min="1" max="5" step="0.1" value="3">
-                    </div>
-                    <div style="text-align: center; font-size: 0.9rem;">
-                        <strong>Area:</strong> <span id="areaVal" style="color: var(--accent); font-weight: bold;">9.000</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Graph 2: Trigonometry -->
-            <div class="card">
-                <h3 style="color: var(--secondary); font-size: 1.1rem;">Trigonometric Wave ($y = A \sin(\omega x)$)</h3>
-                <div class="chart-box">
-                    <canvas id="trigChart"></canvas>
-                </div>
-                <div class="controls">
-                    <div class="control-row">
-                        <label>Amplitude ($A$): <span id="aVal" style="color: var(--secondary); font-weight: bold;">1.0</span></label>
-                        <input type="range" id="aSlider" min="0.5" max="3" step="0.1" value="1">
-                    </div>
-                    <div class="control-row">
-                        <label>Frequency ($\omega$): <span id="wVal" style="color: var(--secondary); font-weight: bold;">1.0</span></label>
-                        <input type="range" id="wSlider" min="0.5" max="4" step="0.1" value="1">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
     <section id="skills">
-        <div class="section-title">
-            <h2>Core Competencies</h2>
-            <p>My technical expertise</p>
+      <div class="container">
+        <div class="section-head"><div class="kicker">Skills</div><h2>Tools I work with.</h2><p>These are the skills I want to develop further and demonstrate through real work.</p></div>
+        <div class="skills-grid">
+          <article class="skill-card"><div class="skill-icon">X</div><h3>Advanced Excel</h3><p>Spreadsheet organization, formulas, data analysis, charts, and presenting information clearly.</p><div class="tag-list"><span class="tag">Formulas</span><span class="tag">Charts</span><span class="tag">Data</span></div></article>
+          <article class="skill-card"><div class="skill-icon">Py</div><h3>Python</h3><p>Programming fundamentals and exploring ways to use code for calculations and data tasks.</p><div class="tag-list"><span class="tag">Basics</span><span class="tag">Problem solving</span></div></article>
+          <article class="skill-card"><div class="skill-icon">∑</div><h3>Mathematics</h3><p>Mathematical reasoning, algebra, functions, and working through problems step by step.</p><div class="tag-list"><span class="tag">Algebra</span><span class="tag">Calculus</span></div></article>
+          <article class="skill-card"><div class="skill-icon">↗</div><h3>Graphs & Visualization</h3><p>Creating and interpreting graphs to make patterns and mathematical relationships easier to understand.</p><div class="tag-list"><span class="tag">Graphs</span><span class="tag">Visual analysis</span></div></article>
+          <article class="skill-card"><div class="skill-icon">AI</div><h3>AI Tools</h3><p>Using AI tools to support learning, explore ideas, and assist with coding and project workflows.</p><div class="tag-list"><span class="tag">AI-assisted learning</span><span class="tag">Experimentation</span></div></article>
+          <article class="skill-card"><div class="skill-icon">&lt;/&gt;</div><h3>Web & Coding Basics</h3><p>Learning how HTML, CSS, and JavaScript work together to create a personal website.</p><div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
         </div>
-        <div class="grid-2">
-            <div class="card">
-                <h3 style="color: var(--primary); margin-bottom: 0.8rem;">Mathematics</h3>
-                <p>Calculus, Analytical Geometry, Linear Algebra, Ordinary Differential Equations, and Mathematical Modeling.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--secondary); margin-bottom: 0.8rem;">Development</h3>
-                <p>C++ Console Programs, Python Scripting, Git/GitHub Version Control, and Responsive Web Design.</p>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-title">
-            <h2>Get in Touch</h2>
-            <p>Connect for academic projects or collaborations</p>
-        </div>
-        <div class="card" style="max-width: 550px; margin: 0 auto; text-align: center;">
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">You can reach out via my GitHub profile or connect directly.</p>
-            <a href="https://github.com/msaqib0963-wq" target="_blank" class="btn btn-primary">
-                <i class="fa-brands fa-github"></i> Visit GitHub Profile
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Muhammad Saqib | BS Mathematics Student, BZU Multan. All Rights Reserved.</p>
-    </footer>
-
-    <!-- Chart.js Logic Script -->
-    <script>
-        // 1. Integral Chart
-        const ctx1 = document.getElementById('integralChart').getContext('2d');
-        
-        function getIntegralData(bLimit) {
-            let labels = [];
-            let fullCurve = [];
-            let shadedArea = [];
-            for (let x = 0; x <= 5; x += 0.1) {
-                let xv = parseFloat(x.toFixed(1));
-                labels.push(xv);
-                let yv = xv * xv;
-                fullCurve.push(yv);
-                shadedArea.push(xv <= bLimit ? yv : null);
-            }
-            return { labels, fullCurve, shadedArea };
-        }
-
-        let initialData = getIntegralData(3.0);
-        const integralChart = new Chart(ctx1, {
-            type: 'line',
-            data: {
-                labels: initialData.labels,
-                datasets: [
-                    { label: 'f(x) = x²', data: initialData.fullCurve, borderColor: '#0284c7', borderWidth: 2, pointRadius: 0 },
-                    { label: 'Integral Area', data: initialData.shadedArea, backgroundColor: 'rgba(2, 132, 199, 0.35)', fill: true, borderColor: 'transparent', pointRadius: 0 }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
-                    y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }
-                },
-                plugins: { legend: { labels: { color: '#f8fafc', font: { size: 11 } } } }
-            }
-        });
-
-        const bSlider = document.getElementById('bSlider');
-        const bVal = document.getElementById('bVal');
-        const areaVal = document.getElementById('areaVal');
-
-        bSlider.addEventListener('input', function() {
-            let b = parseFloat(this.value);
-            bVal.textContent = b.toFixed(1);
-            areaVal.textContent = (Math.pow(b, 3) / 3).toFixed(3);
-
-            let updated = getIntegralData(b);
-            integralChart.data.datasets[1].data = updated.shadedArea;
-            integralChart.update();
-        });
-
-        // 2. Trigonometric Wave Chart
-        const ctx2 = document.getElementById('trigChart').getContext('2d');
-
-        function getTrigData(A, w) {
-            let labels = [];
-            let waveData = [];
-            for (let x = 0; x <= 10; x += 0.1) {
-                labels.push(x.toFixed(1));
-                waveData.process = waveData.push(A * Math.sin(w * x));
-            }
-            return { labels, waveData };
-        }
-
-        let trigInit = getTrigData(1.0, 1.0);
-        const trigChart = new Chart(ctx2, {
-            type: 'line',
-            data: {
-                labels: trigInit.labels,
-                datasets: [{
-                    label: 'A · sin(ωx)',
-                    data: trigInit.waveData,
-                    borderColor: '#6366f1',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
-                    y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }
-                },
-                plugins: { legend: { labels: { color: '#f8fafc', font: { size: 11 } } } }
-            }
-        });
-
-        const aSlider = document.getElementById('aSlider');
-        const wSlider = document.getElementById('wSlider');
-        const aVal = document.getElementById('aVal');
-        const wVal = document.getElementById('wVal');
-
-        function updateTrig() {
-            let A = parseFloat(aSlider.value);
-            let w = parseFloat(wSlider.value);
-            aVal.textContent = A.toFixed(1);
-            wVal.textContent = w.toFixed(1);
-
-            let updated = getTrigData(A, w);
-            trigChart.data.datasets[0].data = updated.waveData;
-            trigChart.update();
-        }
-
-        aSlider.addEventListener('input', updateTrig);
-        wSlider.addEventListener('input', updateTrig);
-    </script>
-</body>
-</html>
+    <section id="projects">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Selected projects</div><h2>Learning through projects.</h2><p>Use this section to showcase real examples. Replace the sample cards with your actual work as you complete it.</p></div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-art" aria-hidden="true"><div class="mini-sheet"><div class="sheet-row"><span></span><span></span><span></span></div><div class="sheet-row"><span></span><span></span><span></span></div><div class="sheet-row"><span></span><span></span><span></span></div><div class="sheet-row"><span></span><span></span><span></span></div></div></div>
+            <div class="project-content"><div class="project-type">Excel · Data</div><h3>Excel Data Analysis</h3><p>A space for an Excel workbook showing data cleaning, formulas, summary tables, and charts. Add a screenshot or workbook link when ready.</p><div class="tag-list"><span class="tag">Excel</span><span class="tag">Charts</span><span class="tag">Analysis</span></div><span class="project-link">Project details coming soon</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art"><div class="chart-box" style="width:min(330px,100%)"><canvas id="projectChart" width="500" height="170" role="img" aria-label="Example mathematical graph">Example mathematical graph.</canvas></div></div>
+            <div class="project-content"><div class="project-type">Mathematics · Visualization</div><h3>Mathematical Graphs</h3><p>An interactive-style visual example of how mathematical relationships can be represented with graphs. Add your own graph or explanation here.</p><div class="tag-list"><span class="tag">Algebra</span><span class="tag">Functions</span><span class="tag">Graphs</span></div><span class="project-link">Demonstration graphic</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art"><div style="font-size:2.7rem;letter-spacing:.2em;color:var(--accent-2)"> { } </div></div>
+            <div class="project-content"><div class="project-type">Python · Programming</div><h3>Python Practice Projects</h3><p>Show small Python programs, explain what each one does, and link to the source code once you have uploaded it to GitHub.</p><div class="tag-list"><span class="tag">Python</span><span class="tag">Logic</span><span class="tag">Code</span></div><span class="project-link">Add GitHub project link</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art"><div style="text-align:center"><div style="font-size:2.2rem;color:var(--warm)">✦</div><strong>AI-assisted workflow</strong><div class="muted" style="font-size:.82rem">Idea → build → test → improve</div></div></div>
+            <div class="project-content"><div class="project-type">AI Tools · Learning</div><h3>AI Tool Experiments</h3><p>Document a real task where you used an AI tool, what you learned, an
