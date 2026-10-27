@@ -54,16 +54,15 @@
     .btn-primary { background: var(--accent); color: #071321; border-color: transparent; }
     .btn-secondary { background: rgba(255,255,255,.025); color: var(--text); }
     
-    /* Profile Card */
-    .profile-card { padding: 16px; background: linear-gradient(145deg, rgba(21,36,58,.94), rgba(13,23,39,.94)); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); text-align: center; }
-    .profile-img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 18px; border: 1px solid var(--line); margin-bottom: 14px; display: block; }
+    /* Profile Card Added Here */
+    .visual-card { padding: 16px; background: linear-gradient(145deg, rgba(21,36,58,.94), rgba(13,23,39,.94)); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); }
+    .profile-img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 18px; border: 1px solid var(--line); display: block; margin-bottom: 14px; }
     
     .visual-top { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .8rem; margin-bottom: 14px; }
     .window-dots { display: flex; gap: 5px; }
     .window-dots i { width: 7px; height: 7px; display: block; border-radius: 50%; background: #40516a; }
-    .chart-box { background: rgba(5,12,23,.65); border: 1px solid var(--line); border-radius: 17px; padding: 12px; display: flex; justify-content: center; align-items: center; }
-    .chart-box svg { width: 100%; height: auto; max-height: 150px; }
-    
+    .chart-box { background: rgba(5,12,23,.45); border: 1px solid var(--line); border-radius: 17px; padding: 12px; }
+    canvas { display: block; width: 100%; height: auto; }
     .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin-top: 12px; }
     .stat { background: rgba(255,255,255,.035); border: 1px solid var(--line); border-radius: 13px; padding: 11px; }
     .stat strong { display: block; font-size: 1rem; color: var(--text); }
@@ -90,7 +89,11 @@
     .tag { font-size: .75rem; color: #c9d8ed; background: rgba(255,255,255,.045); border: 1px solid var(--line); padding: 4px 9px; border-radius: 999px; }
     .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
     .project-card { overflow: hidden; background: var(--panel); border: 1px solid var(--line); border-radius: 19px; }
-    .project-art { min-height: 150px; padding: 15px; display: flex; align-items: center; justify-content: center; background: linear-gradient(130deg, rgba(86,214,201,.12), rgba(122,168,255,.12)); border-bottom: 1px solid var(--line); }
+    .project-art { min-height: 135px; padding: 20px; display: flex; align-items: center; justify-content: center; background: linear-gradient(130deg, rgba(86,214,201,.12), rgba(122,168,255,.12)); border-bottom: 1px solid var(--line); }
+    .project-art .mini-sheet { width: min(330px,100%); border: 1px solid rgba(173,202,238,.25); background: rgba(8,17,30,.76); border-radius: 10px; padding: 10px; }
+    .sheet-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; margin-bottom: 5px; }
+    .sheet-row span { height: 12px; border-radius: 3px; background: rgba(122,168,255,.18); }
+    .sheet-row:first-child span { background: rgba(86,214,201,.35); }
     .project-content { padding: 20px; }
     .project-type { color: var(--accent); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
     .project-link { display: inline-block; margin-top: 14px; color: var(--accent); font-size: .88rem; font-weight: 750; }
@@ -112,4 +115,104 @@
     footer { border-top: 1px solid var(--line); padding: 24px 0 35px; color: var(--muted); font-size: .86rem; }
     .footer-row { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
     .top-link { color: var(--accent); }
-    @media (max-width: 820px
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; padding-top: 60px; gap: 30px; }
+      .visual-card { max-width: 520px; transform: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2,1fr); }
+      .nav-links { gap: 13px; font-size: .82rem; }
+    }
+    @media (max-width: 600px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      nav { min-height: 64px; flex-wrap: wrap; padding: 11px 0; }
+      .menu-btn { display: block; }
+      .nav-links { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 5px 0 8px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 9px 3px; }
+      .hero { padding: 48px 0 45px; }
+      h1 { font-size: clamp(2.55rem, 14vw, 4rem); }
+      section { padding: 48px 0; }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      .panel { padding: 20px; }
+      .certificate { grid-template-columns: auto 1fr; }
+      .certificate .btn { grid-column: 1 / -1; }
+      .stat { padding: 8px; }
+      .stat strong { font-size: .9rem; }
+      .stat span { font-size: .65rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Muhammad Saqib home">
+        <span class="brand-mark">MS</span><span>Muhammad Saqib</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu ☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#certificates">Certificate</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <header class="container hero" id="home">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Mathematics • Data • Technology</span>
+        <h1>Hi, I'm <span class="gradient-text">Muhammad Saqib.</span></h1>
+        <p>
+          I’m a BS Mathematics student interested in using mathematics, Advanced Excel,
+          Python, and data visualization to explore problems and communicate insights clearly.
+          I’m also learning how AI tools can support practical projects.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore my projects <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      
+      <!-- Profile Picture Added Here -->
+      <aside class="visual-card" aria-label="Muhammad Saqib Profile Picture">
+        <div class="visual-top"><span>MUHAMMAD SAQIB</span><span class="window-dots"><i></i><i></i><i></i></span></div>
+        <div class="chart-box" style="padding: 0; background: transparent; border: none;">
+          <img src="profile.jpg" alt="Muhammad Saqib Profile Picture" class="profile-img">
+        </div>
+        <div class="stat-row">
+          <div class="stat"><strong>Excel</strong><span>Data & analysis</span></div>
+          <div class="stat"><strong>Python</strong><span>Learning & coding</span></div>
+          <div class="stat"><strong>Math</strong><span>Logic & graphs</span></div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head"><div class="kicker">About me</div><h2>Math thinking, practical tools.</h2><p>A student portfolio focused on the skills I’m developing and the work I want to share.</p></div>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>My journey</h3>
+            <p>
+              I am a third-semester BS Mathematics student at Bahauddin Zakariya University (BZU), Multan.
+              My interests include algebra, mathematical graphs, working with data in Excel, Python programming,
+              and exploring AI tools. I want to keep learning by building useful projects and documenting what I learn.
+            </p>
+            <p>
+              I believe mathematics is not only about formulas—it can also help us understand patterns,
+              analyze information, and solve real-world problems.
+            </p>
+          </article>
+          <aside class="panel facts">
+            <div class="fact"><div class="fact-icon">∑</div><div><strong>Education</strong><span>BS Mathematics · 3rd semester</span></div></div>
+            <div class="fact"><div class="fact-icon">▦</div><div><strong>Focus areas</strong><span>Excel, Python, algebra, graphs</span></div></div>
+            <div class="fact"><div class="fact-icon">✦</div><div><strong>Exploring</strong><span>Data visualization and AI tools</span></div></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container
