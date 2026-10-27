@@ -53,14 +53,12 @@
     .btn:hover { transform: translateY(-2px); border-color: rgba(86,214,201,.55); }
     .btn-primary { background: var(--accent); color: #071321; border-color: transparent; }
     .btn-secondary { background: rgba(255,255,255,.025); color: var(--text); }
-    
-    /* Profile Image Style */
-    .visual-card { padding: 16px; background: linear-gradient(145deg, rgba(21,36,58,.94), rgba(13,23,39,.94)); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); transform: rotate(1deg); }
-    .profile-img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); display: block; margin-bottom: 12px; }
-    
+    .visual-card { padding: 20px; background: linear-gradient(145deg, rgba(21,36,58,.94), rgba(13,23,39,.94)); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); transform: rotate(1deg); }
     .visual-top { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .8rem; margin-bottom: 14px; }
     .window-dots { display: flex; gap: 5px; }
     .window-dots i { width: 7px; height: 7px; display: block; border-radius: 50%; background: #40516a; }
+    .profile-photo-wrap { display: flex; justify-content: center; margin-bottom: 14px; }
+    .profile-photo { width: 150px; height: 150px; object-fit: cover; object-position: center 25%; border-radius: 50%; border: 3px solid var(--accent); box-shadow: 0 0 0 6px rgba(86,214,201,.12); display: block; }
     .chart-box { background: rgba(5,12,23,.45); border: 1px solid var(--line); border-radius: 17px; padding: 12px; }
     canvas { display: block; width: 100%; height: auto; }
     .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin-top: 12px; }
@@ -174,12 +172,13 @@
           <a class="btn btn-secondary" href="#contact">Get in touch</a>
         </div>
       </div>
-      
-      <!-- Profile Picture Added Here -->
-      <aside class="visual-card" aria-label="Muhammad Saqib Profile Picture">
-        <div class="visual-top"><span>MUHAMMAD SAQIB</span><span class="window-dots"><i></i><i></i><i></i></span></div>
-        <div class="chart-box" style="padding: 0; background: transparent; border: none;">
-          <img src="profile.jpg" alt="Muhammad Saqib Profile Picture" class="profile-img">
+      <aside class="visual-card" aria-label="Illustrative data visualization">
+        <div class="visual-top"><span>DATA EXPLORER / DEMO</span><span class="window-dots"><i></i><i></i><i></i></span></div>
+        <div class="profile-photo-wrap">
+          <img class="profile-photo" src="profile.jpg" alt="Portrait of Muhammad Saqib">
+        </div>
+        <div class="chart-box">
+          <canvas id="heroChart" width="560" height="300" role="img" aria-label="Illustrative line chart showing a rising mathematical curve">Illustrative mathematical curve.</canvas>
         </div>
         <div class="stat-row">
           <div class="stat"><strong>Excel</strong><span>Data & analysis</span></div>
@@ -245,5 +244,4 @@
             <div class="project-content"><div class="project-type">Python · Programming</div><h3>Python Practice Projects</h3><p>Show small Python programs, explain what each one does, and link to the source code once you have uploaded it to GitHub.</p><div class="tag-list"><span class="tag">Python</span><span class="tag">Logic</span><span class="tag">Code</span></div><span class="project-link">Add GitHub project link</span></div>
           </article>
           <article class="project-card">
-            <div class="project-art"><div style="text-align:center"><div style="font-size:2.2rem;color:var(--warm)">✦</div><strong>AI-assisted workflow</strong><div class="muted" style="font-size:.82rem">Idea → build → test → improve</div></div></div>
-            <div class="project-content"><div class="project-type">AI Tools · Learni
+            <div class="project-art"><div style="text-align:center"><div style="font-size:2.2rem;c
