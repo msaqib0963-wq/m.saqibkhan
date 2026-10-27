@@ -54,15 +54,15 @@
     .btn-primary { background: var(--accent); color: #071321; border-color: transparent; }
     .btn-secondary { background: rgba(255,255,255,.025); color: var(--text); }
     
-    /* Profile Card & Image */
+    /* Profile Card */
     .profile-card { padding: 16px; background: linear-gradient(145deg, rgba(21,36,58,.94), rgba(13,23,39,.94)); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); text-align: center; }
     .profile-img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 18px; border: 1px solid var(--line); margin-bottom: 14px; display: block; }
     
     .visual-top { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .8rem; margin-bottom: 14px; }
     .window-dots { display: flex; gap: 5px; }
     .window-dots i { width: 7px; height: 7px; display: block; border-radius: 50%; background: #40516a; }
-    .chart-box { background: rgba(5,12,23,.45); border: 1px solid var(--line); border-radius: 17px; padding: 12px; display: flex; justify-content: center; align-items: center; }
-    .chart-box svg { width: 100%; height: auto; max-height: 160px; }
+    .chart-box { background: rgba(5,12,23,.65); border: 1px solid var(--line); border-radius: 17px; padding: 12px; display: flex; justify-content: center; align-items: center; }
+    .chart-box svg { width: 100%; height: auto; max-height: 150px; }
     
     .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin-top: 12px; }
     .stat { background: rgba(255,255,255,.035); border: 1px solid var(--line); border-radius: 13px; padding: 11px; }
@@ -133,9 +133,6 @@
       .panel { padding: 20px; }
       .certificate { grid-template-columns: auto 1fr; }
       .certificate .btn { grid-column: 1 / -1; }
-      .stat { padding: 8px; }
-      .stat strong { font-size: .9rem; }
-      .stat span { font-size: .65rem; }
     }
   </style>
 </head>
@@ -171,7 +168,7 @@
       <!-- Profile Picture -->
       <aside class="profile-card" aria-label="Muhammad Saqib Profile Picture">
         <div class="visual-top"><span>MUHAMMAD SAQIB</span><span class="window-dots"><i></i><i></i><i></i></span></div>
-        <img src="profile.jpg" alt="Muhammad Saqib Profile Picture" class="profile-img" onerror="this.onerror=null; this.src='WhatsApp Image 2026-10-27 at 11.11.43 AM.jpeg';">
+        <img src="profile.jpg" alt="Muhammad Saqib Profile Picture" class="profile-img">
         <div class="stat-row">
           <div class="stat"><strong>Excel</strong><span>Data & analysis</span></div>
           <div class="stat"><strong>Python</strong><span>Learning</span></div>
@@ -224,15 +221,15 @@
         <div class="section-head"><div class="kicker">Selected projects</div><h2>Learning through projects.</h2><p>Explore real examples of data analysis and mathematical visualizations.</p></div>
         <div class="projects-grid">
           
-          <!-- Project 1: Pure Vector SVG Excel Bar Chart -->
+          <!-- Project 1: Excel Bar Chart -->
           <article class="project-card">
             <div class="project-art">
               <div class="chart-box" style="width:100%;">
                 <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
-                  <line x1="20" y1="20" x2="300" y2="20" stroke="rgba(167,182,204,.14)" stroke-width="1"/>
-                  <line x1="20" y1="50" x2="300" y2="50" stroke="rgba(167,182,204,.14)" stroke-width="1"/>
-                  <line x1="20" y1="80" x2="300" y2="80" stroke="rgba(167,182,204,.14)" stroke-width="1"/>
-                  <line x1="20" y1="110" x2="300" y2="110" stroke="rgba(167,182,204,.3)" stroke-width="1.5"/>
+                  <line x1="20" y1="20" x2="300" y2="20" stroke="rgba(167,182,204,.2)" stroke-width="1"/>
+                  <line x1="20" y1="50" x2="300" y2="50" stroke="rgba(167,182,204,.2)" stroke-width="1"/>
+                  <line x1="20" y1="80" x2="300" y2="80" stroke="rgba(167,182,204,.2)" stroke-width="1"/>
+                  <line x1="20" y1="110" x2="300" y2="110" stroke="rgba(167,182,204,.4)" stroke-width="1.5"/>
                   
                   <rect x="35" y="45" width="30" height="65" rx="4" fill="#56d6c9"/>
                   <rect x="90" y="25" width="30" height="85" rx="4" fill="#7aa8ff"/>
@@ -240,11 +237,11 @@
                   <rect x="200" y="30" width="30" height="80" rx="4" fill="#7aa8ff"/>
                   <rect x="255" y="40" width="30" height="70" rx="4" fill="#f5c778"/>
                   
-                  <text x="50" y="126" font-size="10" fill="#a7b6cc" text-anchor="middle">Jan</text>
-                  <text x="105" y="126" font-size="10" fill="#a7b6cc" text-anchor="middle">Feb</text>
-                  <text x="160" y="126" font-size="10" fill="#a7b6cc" text-anchor="middle">Mar</text>
-                  <text x="215" y="126" font-size="10" fill="#a7b6cc" text-anchor="middle">Apr</text>
-                  <text x="270" y="126" font-size="10" fill="#a7b6cc" text-anchor="middle">May</text>
+                  <text x="50" y="126" font-size="10" fill="#edf4ff" text-anchor="middle">Jan</text>
+                  <text x="105" y="126" font-size="10" fill="#edf4ff" text-anchor="middle">Feb</text>
+                  <text x="160" y="126" font-size="10" fill="#edf4ff" text-anchor="middle">Mar</text>
+                  <text x="215" y="126" font-size="10" fill="#edf4ff" text-anchor="middle">Apr</text>
+                  <text x="270" y="126" font-size="10" fill="#edf4ff" text-anchor="middle">May</text>
                 </svg>
               </div>
             </div>
@@ -257,16 +254,22 @@
             </div>
           </article>
 
-          <!-- Project 2: Pure Vector SVG Mathematical Graph -->
+          <!-- Project 2: Bright & Clear Mathematical Graph -->
           <article class="project-card">
             <div class="project-art">
               <div class="chart-box" style="width:100%;">
                 <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Coordinate Grid Lines -->
-                  <line x1="20" y1="20" x2="300" y2="20" stroke="rgba(167,182,204,.12)" stroke-width="1"/>
-                  <line x1="20" y1="50" x2="300" y2="50" stroke="rgba(167,182,204,.12)" stroke-width="1"/>
-                  <line x1="20" y1="80" x2="300" y2="80" stroke="rgba(167,182,204,.12)" stroke-width="1"/>
-                  <line x1="20" y1="110" x2="300" y2="110" stroke="rgba(167,182,204,.12)" stroke-width="1"/>
+                  <!-- Grid Lines -->
+                  <line x1="20" y1="25" x2="300" y2="25" stroke="rgba(167,182,204,.2)" stroke-width="1"/>
+                  <line x1="20" y1="60" x2="300" y2="60" stroke="rgba(167,182,204,.2)" stroke-width="1"/>
+                  <line x1="20" y1="95" x2="300" y2="95" stroke="rgba(167,182,204,.2)" stroke-width="1"/>
                   
-                  <line x1="160" y1="10" x2="160" y2="125" stroke="rgba(167,182,204,.25)" stroke-width="1.5"/>
-                  <line x1="20" y1="65" x2="300" y2="65" stroke="rgba(167,182,204,.25)" stroke-widt
+                  <!-- Axis Lines -->
+                  <line x1="160" y1="10" x2="160" y2="125" stroke="rgba(122,168,255,.5)" stroke-width="2"/>
+                  <line x1="20" y1="60" x2="300" y2="60" stroke="rgba(122,168,255,.5)" stroke-width="2"/>
+                  
+                  <!-- Bright Sine Curve -->
+                  <path d="M 20 60 Q 55 15, 90 60 T 160 60 T 230 60 T 300 60" fill="none" stroke="#56d6c9" stroke-width="3.5" stroke-linecap="round"/>
+                  
+                  <!-- Highlight Points -->
+                  <circle cx=
