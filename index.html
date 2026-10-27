@@ -58,7 +58,7 @@
     .window-dots { display: flex; gap: 5px; }
     .window-dots i { width: 7px; height: 7px; display: block; border-radius: 50%; background: #40516a; }
     .profile-name { text-align: center; font-weight: 800; font-size: 1.4rem; letter-spacing: -.02em; margin-bottom: 14px; }
-    .profile-photo { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; border: 3px solid var(--accent); box-shadow: 0 0 0 6px rgba(86,214,201,.12); }
+    .profile-photo { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 20%; border-radius: 50%; border: 3px solid var(--accent); box-shadow: 0 0 0 6px rgba(86,214,201,.12); }
     .chart-box { background: rgba(5,12,23,.45); border: 1px solid var(--line); border-radius: 17px; padding: 12px; }
     canvas { display: block; width: 100%; height: auto; }
     .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin-top: 12px; }
@@ -174,4 +174,68 @@
       </div>
       <aside class="visual-card" aria-label="Profile">
         <div class="profile-name">Muhammad Saqib</div>
-        <img class="profile-photo" src="data:image/jpeg;base64,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
+        <img class="profile-photo" src="profile.jpg" alt="Portrait of Muhammad Saqib">
+      </aside>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head"><div class="kicker">About me</div><h2>Math thinking, practical tools.</h2><p>A student portfolio focused on the skills I’m developing and the work I want to share.</p></div>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>My journey</h3>
+            <p>
+              I am a third-semester BS Mathematics student at Bahauddin Zakariya University (BZU), Multan.
+              My interests include algebra, mathematical graphs, working with data in Excel, Python programming,
+              and exploring AI tools. I want to keep learning by building useful projects and documenting what I learn.
+            </p>
+            <p>
+              I believe mathematics is not only about formulas—it can also help us understand patterns,
+              analyze information, and solve real-world problems.
+            </p>
+          </article>
+          <aside class="panel facts">
+            <div class="fact"><div class="fact-icon">∑</div><div><strong>Education</strong><span>BS Mathematics · 3rd semester</span></div></div>
+            <div class="fact"><div class="fact-icon">▦</div><div><strong>Focus areas</strong><span>Excel, Python, algebra, graphs</span></div></div>
+            <div class="fact"><div class="fact-icon">✦</div><div><strong>Exploring</strong><span>Data visualization and AI tools</span></div></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Skills</div><h2>Tools I work with.</h2><p>These are the skills I want to develop further and demonstrate through real work.</p></div>
+        <div class="skills-grid">
+          <article class="skill-card"><div class="skill-icon">X</div><h3>Advanced Excel</h3><p>Spreadsheet organization, formulas, data analysis, charts, and presenting information clearly.</p><div class="tag-list"><span class="tag">Formulas</span><span class="tag">Charts</span><span class="tag">Data</span></div></article>
+          <article class="skill-card"><div class="skill-icon">Py</div><h3>Python</h3><p>Programming fundamentals and exploring ways to use code for calculations and data tasks.</p><div class="tag-list"><span class="tag">Basics</span><span class="tag">Problem solving</span></div></article>
+          <article class="skill-card"><div class="skill-icon">∑</div><h3>Mathematics</h3><p>Mathematical reasoning, algebra, functions, and working through problems step by step.</p><div class="tag-list"><span class="tag">Algebra</span><span class="tag">Calculus</span></div></article>
+          <article class="skill-card"><div class="skill-icon">↗</div><h3>Graphs & Visualization</h3><p>Creating and interpreting graphs to make patterns and mathematical relationships easier to understand.</p><div class="tag-list"><span class="tag">Graphs</span><span class="tag">Visual analysis</span></div></article>
+          <article class="skill-card"><div class="skill-icon">AI</div><h3>AI Tools</h3><p>Using AI tools to support learning, explore ideas, and assist with coding and project workflows.</p><div class="tag-list"><span class="tag">AI-assisted learning</span><span class="tag">Experimentation</span></div></article>
+          <article class="skill-card"><div class="skill-icon">&lt;/&gt;</div><h3>Web & Coding Basics</h3><p>Learning how HTML, CSS, and JavaScript work together to create a personal website.</p><div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Selected projects</div><h2>Learning through projects.</h2><p>Use this section to showcase real examples. Replace the sample cards with your actual work as you complete it.</p></div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-art" aria-hidden="true"><div class="mini-sheet"><div class="sheet-row"><span></span><span></span><span></span></div><div class="sheet-row"><span></span><span></span><span></span></div><div class="sheet-row"><span></span><span></span><span></span></div><div class="sheet-row"><span></span><span></span><span></span></div></div></div>
+            <div class="project-content"><div class="project-type">Excel · Data</div><h3>Excel Data Analysis</h3><p>A space for an Excel workbook showing data cleaning, formulas, summary tables, and charts. Add a screenshot or workbook link when ready.</p><div class="tag-list"><span class="tag">Excel</span><span class="tag">Charts</span><span class="tag">Analysis</span></div><span class="project-link">Project details coming soon</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art"><div class="chart-box" style="width:min(330px,100%)"><canvas id="projectChart" width="500" height="170" role="img" aria-label="Example mathematical graph">Example mathematical graph.</canvas></div></div>
+            <div class="project-content"><div class="project-type">Mathematics · Visualization</div><h3>Mathematical Graphs</h3><p>An interactive-style visual example of how mathematical relationships can be represented with graphs. Add your own graph or explanation here.</p><div class="tag-list"><span class="tag">Algebra</span><span class="tag">Functions</span><span class="tag">Graphs</span></div><span class="project-link">Demonstration graphic</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art"><div style="font-size:2.7rem;letter-spacing:.2em;color:var(--accent-2)"> { } </div></div>
+            <div class="project-content"><div class="project-type">Python · Programming</div><h3>Python Practice Projects</h3><p>Show small Python programs, explain what each one does, and link to the source code once you have uploaded it to GitHub.</p><div class="tag-list"><span class="tag">Python</span><span class="tag">Logic</span><span class="tag">Code</span></div><span class="project-link">Add GitHub project link</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art"><div style="text-align:center"><div style="font-size:2.2rem;color:var(--warm)">✦</div><strong>AI-assisted workflow</strong><div class="muted" style="font-size:.82rem">Idea → build → test → improve</div></div></div>
+            <div class="project-content"><div class="project-type">AI Tools · Learning</div><h3>AI Tool Experiments</h3><p>Document a real task where you used an AI tool, what you learned, and how you checked the result.</p><div class="tag-list"><span class="tag">AI tools</span><span class="tag">Learning</span></div><span class="project-link">Add a real example</span></div>
+          </article>
+        </div>
+        <div class="notice">Portfolio tip: these are starter project descriptio
